@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Felotus</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <span id="status-bar-time">16:15</span>
+            <div id="battery-capsule" class="battery-capsule">
+                <div id="battery-capsule-liquid" class="battery-liquid"></div>
+                <span id="battery-capsule-level" class="battery-level-text">--</span>
+            </div>
+        </div>
+
+        <!-- 侧边栏菜单 -->
+        <div class="sidebar-menu">
+            <div class="sidebar-background"></div>
+            <div class="sidebar-content">
+                <div class="sidebar-top-actions">
+                    <button class="action-btn"><i class="fa-solid fa-calendar-day"></i> 纪念日</button>
+                    <button class="action-btn">
+                        <i class="fa-solid fa-arrows-rotate"></i> 切换人设
+                    </button>
+                    <button class="action-btn" id="close-sidebar-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                
+                <div class="sidebar-profile-card" id="sidebar-profile-link"> 
+                    <div class="profile-info">
+                        <img src="https://i.imgur.com/Jz9v5aB.png" alt="avatar" class="avatar">
+                        <div class="profile-details">
+                            <div class="profile-name">京九殊</div>
+                            <div class="profile-status">我的心是旷野的鸟，在你的眼…</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav-list">
+                    <a href="#" class="nav-item"><i class="fa-solid fa-plug"></i><span>API</span><i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="#" class="nav-item"><i class="fa-solid fa-star"></i><span>收藏</span><i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="#" class="nav-item"><i class="fa-solid fa-palette"></i><span>美化</span><i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="#" class="nav-item"><i class="fa-solid fa-wallet"></i><span>钱包</span><i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="#" class="nav-item"><i class="fa-solid fa-gem"></i><span>特殊</span><i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="#" class="nav-item"><i class="fa-solid fa-download"></i><span>数据</span><i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="sidebar-bottom-actions">
+                    <button><i class="fa-solid fa-gear"></i><span>设置</span></button>
+                    <button><i class="fa-solid fa-cloud"></i><span>天气</span></button>
+                    <button><i class="fa-solid fa-location-dot"></i><span>定位</span></button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 遮罩层 -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- 主体内容包裹器 -->
+        <div class="main-content-wrapper">
+            <!-- 页面内容区域 -->
+            <main class="main-content">
+                <!-- 消息页面 -->
+                <div id="page-messages" class="page active">
+                    <header class="page-header">
+                        <div class="user-info">
+                            <img src="https://i.imgur.com/uG2g8xX.png" alt="avatar" class="avatar js-open-sidebar">
+                            <div class="user-details-header">
+                                <div class="header-username">京九殊</div>
+                                <div class="header-status">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>离开 ></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-actions">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </header>
+                    <div class="search-bar messages-search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>搜索</span>
+                    </div>
+                    <div class="chat-list">
+                        <div class="chat-item"><img src="https://picsum.photos/seed/user2/100/100" alt="avatar"><div class="chat-details"><div class="chat-title">小号</div><div class="chat-message"><span>[哭]</span></div></div><div class="chat-meta">昨天 21:14</div></div>
+                        <div class="chat-item"><div class="avatar-group-logo">LOG</div><div class="chat-details"><div class="chat-title">设计-视觉传达</div><div class="chat-message">继教关老师: @全体成员 本次已提交毕...</div></div><div class="chat-meta">06/05 <i class="fa-solid fa-bell-slash"></i></div></div>
+                        <div class="chat-item"><img src="https://picsum.photos/seed/user3/100/100" alt="avatar"><div class="chat-details"><div class="chat-title">今天酒馆了吗？</div><div class="chat-message"><span>[闭眼]</span></div></div><div class="chat-meta">16:15</div></div>
+                        <div class="chat-item"><img src="https://picsum.photos/seed/user4/100/100" alt="avatar"><div class="chat-details"><div class="chat-title">月亮 <span class="vip">SVIP1</span></div><div class="chat-message"><span>[哭]</span></div></div><div class="chat-meta">14:43</div></div>
+                    </div>
+                </div>
+
+                <!-- 角色页面 -->
+                <div id="page-contacts" class="page">
+                    <header class="page-header"><div class="page-title js-open-sidebar">角色</div><div class="header-actions"><i class="fa-solid fa-ellipsis-vertical"></i></div></header>
+                    <div class="search-bar contacts-search-bar"><i class="fa-solid fa-magnifying-glass"></i><span>搜索</span></div>
+                    <div class="contact-groups">
+                        <div class="group-item new-friend-group-item"><div class="group-header new-friend-item"><div>新朋友</div><i class="fa-solid fa-chevron-right"></i></div></div>
+                        <div class="contact-tabs"><button class="contact-tab-btn active" data-target="tab-content-groups">分组</button><button class="contact-tab-btn" data-target="tab-content-group-chats">群聊</button></div>
+                        <div class="tab-content-wrapper">
+                            <div id="tab-content-groups" class="contact-tab-content active">
+                                <div class="group-item"><div class="group-header"><div><i class="fa-solid fa-chevron-right"></i> <span class="group-name">特别关心</span></div><span class="group-count">0</span></div></div>
+                                <div class="group-item"><div class="group-header"><div><i class="fa-solid fa-chevron-right"></i> <span class="group-name">默认分组</span></div><span class="group-count">3</span></div></div>
+                            </div>
+                            <div id="tab-content-group-chats" class="contact-tab-content">
+                                <div class="group-item"><div class="group-header"><div><i class="fa-solid fa-chevron-right"></i> <span class="group-name">我创建的群聊</span></div><span class="group-count">1</span></div></div>
+                                <div class="group-item"><div class="group-header"><div><i class="fa-solid fa-chevron-right"></i> <span class="group-name">我加入的群聊</span></div><span class="group-count">1</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 组件页面 -->
+                <div id="page-tools" class="page">
+                    <header class="page-header"><div class="page-title js-open-sidebar">组件</div></header>
+                    <div class="tools-page-content">
+                        <div class="tool-category">
+                            <h3 class="tool-category-title">功能类</h3>
+                            <div class="actions-grid"><div class="action-item"><i class="fa-solid fa-book-open"></i><span>小说</span></div><div class="action-item"><i class="fa-solid fa-music"></i><span>音乐</span></div><div class="action-item"><i class="fa-solid fa-book-journal-whills"></i><span>日记</span></div><div class="action-item"><i class="fa-solid fa-users-line"></i><span>菲洛图论坛</span></div><div class="action-item"><i class="fa-solid fa-hourglass-half"></i><span>专注陪伴</span></div><div class="action-item"><i class="fa-solid fa-map-pin"></i><span>记忆点</span></div></div>
+                        </div>
+                        <div class="tool-category">
+                            <h3 class="tool-category-title">休闲类</h3>
+                            <div class="actions-grid"><div class="action-item"><i class="fa-solid fa-egg"></i><span>扭蛋</span></div><div class="action-item"><i class="fa-solid fa-leaf"></i><span>农场</span></div><div class="action-item"><i class="fa-solid fa-paw"></i><span>宠物</span></div><div class="action-item"><i class="fa-solid fa-utensils"></i><span>烹饪</span></div></div>
+                        </div>
+                        <div class="tool-category">
+                            <h3 class="tool-category-title">桌游类</h3>
+                            <div class="actions-grid"><div class="action-item"><i class="fa-solid fa-user-secret"></i><span>谁是卧底</span></div><div class="action-item"><i class="fa-solid fa-moon"></i><span>狼人杀</span></div><div class="action-item"><i class="fa-solid fa-comments"></i><span>真心话</span></div><div class="action-item"><i class="fa-solid fa-plane"></i><span>飞行棋</span></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 长生树页面 -->
+                <div id="page-tree" class="page">
+                    <header class="page-header"><div class="page-title js-open-sidebar">长生树</div></header>
+                    <div class="tree-container"><i class="fa-solid fa-tree"></i><p>长生树正在茁壮成长...</p></div>
+                </div>
+
+                <!-- 动态页面 -->
+                <div id="page-feed" class="page">
+                    <header class="page-header"><div class="page-title js-open-sidebar">动态</div><div class="header-actions"><i class="fa-solid fa-gear"></i></div></header>
+                    <div class="feed-content">
+                        <div class="feed-profile-banner"><img src="https://picsum.photos/seed/user1/50/50" alt="avatar" class="avatar"><div class="feed-user-info"><span>京九殊</span></div><i class="fa-solid fa-chevron-right"></i></div>
+                        <div class="actions-grid"><div class="action-item"><i class="fa-solid fa-image"></i><span>相册</span></div><div class="action-item"><i class="fa-solid fa-comment-dots"></i><span>说说</span></div><div class="action-item"><i class="fa-solid fa-grip"></i><span>更多</span></div></div>
+                        <div class="feed-card"><div class="feed-card-header"><img src="https://picsum.photos/seed/user5/100/100" alt="avatar"><div class="author-info"><div class="author-name">测试</div><div class="post-time">今天 12:00</div></div><i class="fa-solid fa-ellipsis"></i></div><div class="feed-card-body"><p>这是一条测试帖子</p><div class="shared-content">测试转发内容样式，功能还没做</div></div></div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 底部导航栏 -->
+            <nav class="bottom-nav">
+                <button class="nav-button active" data-target="page-messages"><i class="fa-solid fa-comment-dots"></i></button>
+                <button class="nav-button" data-target="page-contacts"><i class="fa-solid fa-address-book"></i></button>
+                <button class="nav-button" data-target="page-tree"><i class="fa-solid fa-tree"></i></button>
+                <button class="nav-button" data-target="page-tools"><i class="fa-solid fa-toolbox"></i></button>
+                <button class="nav-button" data-target="page-feed"><i class="fa-solid fa-star"></i></button>
+            </nav>
+        </div> <!-- End of main-content-wrapper -->
+
+        <!-- 用户设置页面层 -->
+        <div id="page-user-settings" class="page-overlay">
+            <header class="user-settings-header">
+                <i id="user-settings-back-btn" class="fa-solid fa-chevron-left"></i>
+                <span>用户设置</span>
+                <!-- [MODIFIED] 1. 相机图标换成保存图标 -->
+                <i class="fa-solid fa-floppy-disk"></i>
+            </header>
+            <div class="user-settings-content">
+                <div class="user-settings-tags">
+                    <span class="tag">京九殊</span>
+                    <span class="tag add-tag">添加设定 +</span>
+                </div>
+                <div class="user-settings-profile">
+                    <img src="https://i.imgur.com/uG2g8xX.png" alt="avatar">
+                    <h2>京九殊</h2>
+                    <p>女 20岁 4月25日</p>
+                </div>
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <!-- [MODIFIED] 2. “我的设定”图标 -->
+                        <div><i class="fa-solid fa-user"></i> 我的设定</div>
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
+                    <div class="settings-card-body">
+                        <textarea placeholder="此处填写设定"></textarea>
+                    </div>
+                </div>
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <!-- [MODIFIED] 3. “我的个性签名”图标 -->
+                        <div><i class="fa-solid fa-pen-to-square"></i> 我的个性签名</div>
+                    </div>
+                    <div class="settings-card-body">
+                        <input type="text" placeholder="此处填写个性签名">
+                    </div>
+                </div>
+                <div class="settings-nav-group">
+                    <a href="#" class="settings-nav-item">
+                        <!-- [MODIFIED] 4. “我的空间”图标 -->
+                        <div><i class="fa-solid fa-star"></i> 我的空间</div>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    <a href="#" class="settings-nav-item">
+                        <!-- 修改后的正确代码 -->
+<div><i class="fa-solid fa-gift"></i> 我的礼物墙</div>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
